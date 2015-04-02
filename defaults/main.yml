@@ -1,0 +1,10 @@
+# Default variables, see yoshzz.solr/defaults/main.yml for more.
+---
+
+solr_version: "4.9.0"
+solr_path: /opt/solr
+solr_home_path: /var/data/solr
+solr_java_package: openjdk-7-jre-headless
+
+# Source for synched solr config:
+solr_configuration_directory: '1.6-solr-conf-4.x'

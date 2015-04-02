@@ -1,0 +1,27 @@
+---
+##
+# Install Solr dev server.
+#
+
+- name: Install dependencies.
+  apt: name={{ item }} state=present
+  with_items:
+    # Needed for syncing as root.
+    - sudo
+    - rsync
+
+- name: Registering Solr default core
+  lineinfile: >
+    dest={{ solr_home_path }}/collection1/core.properties
+    state=present
+    create=yes
+    regexp='name='
+    line="name=collection1"
+  notify: restart solr
+
+- name: Syncing config.
+  synchronize: >
+    src={{ solr_configuration_directory }}/
+    dest={{ solr_home_path }}/collection1/conf/
+    rsync_path="sudo rsync"
+  notify: restart solr
