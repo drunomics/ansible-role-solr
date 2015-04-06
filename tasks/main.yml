@@ -10,6 +10,15 @@
     - sudo
     - rsync
 
+  # We need a recent solr.xml for auto-discovering solr cores to work.
+- name: Update solr.xml
+  copy: >
+    src=solr.xml
+    dest={{ solr_home_path}}/solr.xml
+    owner=root
+    group=root
+    mode=0644
+
 - name: Registering Solr default core
   lineinfile: >
     dest={{ solr_home_path }}/collection1/core.properties
