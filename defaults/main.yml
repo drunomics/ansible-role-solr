@@ -1,10 +1,16 @@
 # Default variables, see yoshzz.solr/defaults/main.yml for more.
 ---
-
+workspace: /root
 solr_version: "4.9.0"
 solr_path: /opt/solr
-solr_home_path: /var/data/solr
 solr_java_package: openjdk-7-jre-headless
+solr_home_path: /var/data/solr
+solr_home_owner: root
+solr_home_group: root
+solr_home_mode: 755
+solr_java_memory_options: "-Xmx128M -Xms64M -XX:MaxPermSize=64M -Xmn32M"
 
 # Source for synched solr config:
 solr_configuration_directory: '1.6-solr-conf-4.x'
+
+
